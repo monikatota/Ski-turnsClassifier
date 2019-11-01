@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfService3appTEST" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfService3appTEST" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52050/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="OutputData">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="leftGyroX" nillable="true" type="q1:ArrayOfdouble" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="leftGyroY" nillable="true" type="q2:ArrayOfdouble" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="leftGyroZ" nillable="true" type="q3:ArrayOfdouble" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="responses" nillable="true" type="q4:ArrayOfdouble" />
+      <xs:element minOccurs="0" name="turnsLeft" type="xs:double" />
+      <xs:element minOccurs="0" name="turnsRight" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OutputData" nillable="true" type="tns:OutputData" />
+</xs:schema>
