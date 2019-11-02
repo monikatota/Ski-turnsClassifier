@@ -6,4 +6,3 @@ C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\bin\WcfService3ap
 C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\obj\Debug\WcfService3appTEST.exe
 C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\obj\Debug\Interop.MLApp.dll
 C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\obj\Debug\WcfService3appTEST.csproj.ResolveComReference.cache
-C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\obj\Debug\WcfService3appTEST.csprojAssemblyReference.cache

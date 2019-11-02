@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService3appTEST", "WcfService3appTEST\WcfService3appTEST.csproj", "{4C742057-E7E2-4F9E-A43A-77BFFFB7B0E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService3appTEST\WcfService.csproj", "{4C742057-E7E2-4F9E-A43A-77BFFFB7B0E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{52CD305F-7497-4B38-9079-99853EE91C76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp", "WindowsFormsApp1\WindowsFormsApp.csproj", "{52CD305F-7497-4B38-9079-99853EE91C76}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4C742057-E7E2-4F9E-A43A-77BFFFB7B0E6} = {4C742057-E7E2-4F9E-A43A-77BFFFB7B0E6}
 	EndProjectSection
