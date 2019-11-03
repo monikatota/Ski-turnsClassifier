@@ -10,23 +10,28 @@ namespace WcfService
         [OperationContract]
         void SendPackage(byte[] rawData, int numberOfpackages);
 
-        // Use MATLAB scripts to process the data and classify ski-turns
+        // Use MATLAB scripts to process data and classify ski-turns
         [OperationContract]
         OutputData DetectTurns();
     }
 
-    // Service send data to client in this format
+    // Format of data that are send from service to client
     [DataContract]
     public class OutputData
     {
+        // filtered gyroscope data
         [DataMember]
         public double[] leftGyroX;
         [DataMember]
         public double[] leftGyroY;
         [DataMember]
         public double[] leftGyroZ;
+
+        // classified either turns right or left
         [DataMember]
         public double[] responses;
+
+        // total number of turns
         [DataMember]
         public double turnsRight;
         [DataMember]

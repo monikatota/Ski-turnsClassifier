@@ -1,16 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.ServiceModel;
-using System.Reflection;
 
 namespace WcfService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     public class Service : IService
     {
         static MLApp.MLApp _matlab;
         const string fileName = "SensorsDataToClassify.data";
-        static string newFilePath; //= "D:\\FILES\\STUDIA\\Snowcookie\\" + fileName;
+        static string newFilePath; 
         static string scriptDirectory;
         static FileStream writeStream;
         static BinaryWriter writer;
@@ -28,22 +26,6 @@ namespace WcfService
                 newFilePath = projectDirectory + "\\matlab_scripts\\" + fileName;
                 scriptDirectory = projectDirectory + "\\matlab_scripts";
 
-                // This will get the current WORKING directory (i.e. \bin\Debug)
-                string workingDirectory = Environment.CurrentDirectory;
-                // or: Directory.GetCurrentDirectory() gives the same result
-
-                // This will get the current PROJECT directory
-                string projectDirectory_ = Directory.GetParent(workingDirectory).Parent.FullName;
-                string startupPath = Environment.CurrentDirectory;
-
-                string temp = AppDomain.CurrentDomain.BaseDirectory;
-                var startDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-
-                var projectDir = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-                var currentDirectory_ = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-                string projectDirectory__ = currentDirectory.Parent.FullName;
-
-
                 // Create temporary file with input data
                 writeStream = new FileStream(newFilePath, FileMode.Create);
                 writer = new BinaryWriter(writeStream);
@@ -52,7 +34,8 @@ namespace WcfService
             // Write data to file
             writer.Write(rawData);
 
-            if(countReceivedPackages== numberOfpackages) // If this is last package, then close binary writer
+            // If this is last package, then close binary writer
+            if (countReceivedPackages== numberOfpackages) 
             {
                 writer.Close();
                 countReceivedPackages = 0;
