@@ -52,7 +52,7 @@ namespace WcfService
             object output = null;
 
             // Call the MATLAB function classify_turns
-            _matlab.Feval("classify_turns", 6, out output, newFilePath);
+            _matlab.Feval("classify_turns", 9, out output, newFilePath);
 
             // Define result as object
             object[] result = output as object[];
@@ -63,11 +63,17 @@ namespace WcfService
             double[,] leftGyroX_ = (double[,])result[0];
             double[,] leftGyroY_ = (double[,])result[1];
             double[,] leftGyroZ_ = (double[,])result[2];
-            double[,] response_ = (double[,])result[3];
+            double[,] rightGyroX_ = (double[,])result[3];
+            double[,] rightGyroY_ = (double[,])result[4];
+            double[,] rightGyroZ_ = (double[,])result[5];
+            double[,] response_ = (double[,])result[6];
 
             double[] leftGyroX = new double[leftGyroX_.Length];
             double[] leftGyroY = new double[leftGyroY_.Length];
             double[] leftGyroZ = new double[leftGyroZ_.Length];
+            double[] rightGyroX = new double[leftGyroX_.Length];
+            double[] rightGyroY = new double[leftGyroY_.Length];
+            double[] rightGyroZ = new double[leftGyroZ_.Length];
             double[] response = new double[response_.Length];
 
             for(int i=0; i<response_.Length; i++)
@@ -75,17 +81,23 @@ namespace WcfService
                 leftGyroX[i] = leftGyroX_[i, 0];
                 leftGyroY[i] = leftGyroY_[i, 0];
                 leftGyroZ[i] = leftGyroZ_[i, 0];
+                rightGyroX[i] = rightGyroX_[i, 0];
+                rightGyroY[i] = rightGyroY_[i, 0];
+                rightGyroZ[i] = rightGyroZ_[i, 0];
                 response[i] = response_[i, 0];
             }
 
             classifiedTurns.leftGyroX = leftGyroX;
             classifiedTurns.leftGyroY = leftGyroY;
             classifiedTurns.leftGyroZ = leftGyroZ;
+            classifiedTurns.rightGyroX = rightGyroX;
+            classifiedTurns.rightGyroY = rightGyroY;
+            classifiedTurns.rightGyroZ = rightGyroZ;
             classifiedTurns.responses = response;
 
-            double turnsLeft = (double)result[4];
+            double turnsLeft = (double)result[7];
             classifiedTurns.turnsLeft = turnsLeft;
-            double turnsRight = (double)result[5];
+            double turnsRight = (double)result[8];
             classifiedTurns.turnsRight = turnsRight;
 
             return classifiedTurns;

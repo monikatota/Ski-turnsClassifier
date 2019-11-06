@@ -1,7 +1,10 @@
 %Data filtration and classification
 function [Left_Ski_Gyroscope_X_axis,...
           Left_Ski_Gyroscope_Y_axis,...
-          Left_Ski_Gyroscope_Z_axis, ...
+          Left_Ski_Gyroscope_Z_axis,...
+		  Right_Ski_Gyroscope_X_axis,...
+          Right_Ski_Gyroscope_Y_axis,...
+          Right_Ski_Gyroscope_Z_axis,...
           classified_labels, COUNT_TURN_LEFT, COUNT_TURN_RIGHT] = classify_turns( file )
 
 %LOAD TRAINED MODEL
@@ -33,9 +36,9 @@ predictions = SVM_model.predictFcn(SkiTurns_dataset_to_classify);
 classified_labels=zeros(size(predictions,1),1);
 for i=1:size(predictions,1)
     if strcmp(predictions(i),'Turn right')
-        classified_labels(i,1)=-2;
+        classified_labels(i,1)=-1;
     elseif strcmp(predictions(i),'Turn left')
-        classified_labels(i,1)=2;
+        classified_labels(i,1)=1;
     elseif strcmp(predictions(i),'No turn')
         classified_labels(i,1)=0;
     end
@@ -48,10 +51,10 @@ COUNT_TURN_RIGHT = 0;
 
 for i=2:size(classified_labels,1)
     % turn left
-    if(classified_labels(i)==2 && classified_labels(i-1)~=2 || classified_labels(i)==2 && i==2 )
+    if(classified_labels(i)==1 && classified_labels(i-1)~=1 || classified_labels(i)==1 && i==2 )
         length_of_turn = 1;
         j=i+1;
-        while(classified_labels(j)==2)
+        while(classified_labels(j)==1)
             length_of_turn = length_of_turn + 1;
             j=j+1;
         end
@@ -67,10 +70,10 @@ for i=2:size(classified_labels,1)
             COUNT_TURN_LEFT = COUNT_TURN_LEFT + 1;
         end
     % turn right  
-    elseif(classified_labels(i)==-2 && classified_labels(i-1)~=-2 || classified_labels(i)==-2 && i==2 )
+    elseif(classified_labels(i)==-1 && classified_labels(i-1)~=-1 || classified_labels(i)==-1 && i==2 )
         length_of_turn = 1;
         j=i+1;
-        while(classified_labels(j)==-2)
+        while(classified_labels(j)==-1)
             length_of_turn = length_of_turn + 1;
             j=j+1;
         end

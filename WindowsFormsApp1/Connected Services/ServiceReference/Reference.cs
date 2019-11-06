@@ -35,6 +35,15 @@ namespace WindowsFormsApp.ServiceReference {
         private double[] responsesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[] rightGyroXField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[] rightGyroYField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double[] rightGyroZField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double turnsLeftField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -98,6 +107,45 @@ namespace WindowsFormsApp.ServiceReference {
                 if ((object.ReferenceEquals(this.responsesField, value) != true)) {
                     this.responsesField = value;
                     this.RaisePropertyChanged("responses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] rightGyroX {
+            get {
+                return this.rightGyroXField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.rightGyroXField, value) != true)) {
+                    this.rightGyroXField = value;
+                    this.RaisePropertyChanged("rightGyroX");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] rightGyroY {
+            get {
+                return this.rightGyroYField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.rightGyroYField, value) != true)) {
+                    this.rightGyroYField = value;
+                    this.RaisePropertyChanged("rightGyroY");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double[] rightGyroZ {
+            get {
+                return this.rightGyroZField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.rightGyroZField, value) != true)) {
+                    this.rightGyroZField = value;
+                    this.RaisePropertyChanged("rightGyroZ");
                 }
             }
         }

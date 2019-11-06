@@ -26,6 +26,12 @@ namespace WcfService
         public double[] leftGyroY;
         [DataMember]
         public double[] leftGyroZ;
+        [DataMember]
+        public double[] rightGyroX;
+        [DataMember]
+        public double[] rightGyroY;
+        [DataMember]
+        public double[] rightGyroZ;
 
         // classified either turns right or left
         [DataMember]
