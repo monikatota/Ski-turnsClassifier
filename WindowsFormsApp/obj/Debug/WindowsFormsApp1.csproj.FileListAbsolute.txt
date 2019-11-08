@@ -1,0 +1,13 @@
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\bin\Debug\CircularProgressBar.dll
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\bin\Debug\WinFormAnimation.dll
+C:\Users\Ja\source\repos\WcfService3appTEST\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
