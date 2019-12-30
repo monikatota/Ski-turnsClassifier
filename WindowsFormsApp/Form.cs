@@ -9,10 +9,9 @@ namespace WindowsFormsApp
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        string filePath = "D:\\FILES\\STUDIA\\Snowcookie\\8FEE802E-202E-4963-BF6C-87878FF7FD1A_Daniel\\SensorsData.data"; // string.Empty;
+        string filePath = string.Empty;
         int count;
         bool plotExists;
-        ServiceClient client;
         OutputData results;
 
         public Form()
@@ -35,9 +34,9 @@ namespace WindowsFormsApp
             chartGyroscope.Series[0].Name = "gyroscope X axis";
             chartGyroscope.Series[1].Name = "gyroscope Y axis";
             chartGyroscope.Series[2].Name = "gyroscope Z axis";
-            label1.Text = "1 - turn left" + System.Environment.NewLine + "-1 - turn right"
-                + System.Environment.NewLine + "0 - no turns";
-            label1.Visible = false;
+            turnsLegend.Text = " 1 - left turn" + System.Environment.NewLine + "-1 - right turn"
+                + System.Environment.NewLine + " 0 - no turn";
+            turnsLegend.Visible = false;
             chartGyroscope.Series[4].Name = "gyroscope X axis ";
             chartGyroscope.Series[5].Name = "gyroscope Y axis ";
             chartGyroscope.Series[6].Name = "gyroscope Z axis ";
@@ -50,30 +49,30 @@ namespace WindowsFormsApp
             chartGyroscope.Titles[0].Text = "Gyroscope signals from left ski";
             chartGyroscope.Titles[1].Text = "Gyroscope signals from right ski";
             chartGyroscope.Titles[2].Text = "Detected ski-turns";
-            checkBox3.Text = "Gyroscope X axis";
-            checkBox1.Text = "Gyroscope Y axis";
-            checkBox2.Text = "Gyroscope Z axis";
-            checkBox4.Text = "Gyroscope X axis";
-            checkBox5.Text = "Gyroscope Y axis";
-            checkBox6.Text = "Gyroscope Z axis";
-            checkBox3.Checked = true;
-            checkBox1.Checked = true;
-            checkBox2.Checked = true;
-            checkBox4.Checked = true;
-            checkBox5.Checked = true;
-            checkBox6.Checked = true;
-            checkBox3.Visible = false;
-            checkBox1.Visible = false;
-            checkBox2.Visible = false;
-            checkBox4.Visible = false;
-            checkBox5.Visible = false;
-            checkBox6.Visible = false;
+            leftGyroX.Text = "Gyroscope X axis";
+            leftGyroY.Text = "Gyroscope Y axis";
+            leftGyroZ.Text = "Gyroscope Z axis";
+            rightGyroX.Text = "Gyroscope X axis";
+            rightGyroY.Text = "Gyroscope Y axis";
+            rightGyroZ.Text = "Gyroscope Z axis";
+            leftGyroX.Checked = true;
+            leftGyroY.Checked = true;
+            leftGyroZ.Checked = true;
+            rightGyroX.Checked = true;
+            rightGyroY.Checked = true;
+            rightGyroZ.Checked = true;
+            leftGyroX.Visible = false;
+            leftGyroY.Visible = false;
+            leftGyroZ.Visible = false;
+            rightGyroX.Visible = false;
+            rightGyroY.Visible = false;
+            rightGyroZ.Visible = false;
         }
 
         private void GetResponses()
         {
             // create client to call service's methods
-            client = new ServiceClient();
+            ServiceClient client = new ServiceClient();
 
             // read data from selected file
             byte[] fileBytes = File.ReadAllBytes(@filePath);
@@ -109,7 +108,7 @@ namespace WindowsFormsApp
         private void DisplayResults()
         {
             circularProgressBar.Visible = false;
-            timer1.Stop();
+            timer.Stop();
 
             chartGyroscope.Visible = true;
 
@@ -136,22 +135,22 @@ namespace WindowsFormsApp
             }
 
             // display legend
-            checkBox3.Visible = true;
-            checkBox1.Visible = true;
-            checkBox2.Visible = true;
-            checkBox4.Visible = true;
-            checkBox5.Visible = true;
-            checkBox6.Visible = true;
+            leftGyroX.Visible = true;
+            leftGyroY.Visible = true;
+            leftGyroZ.Visible = true;
+            rightGyroX.Visible = true;
+            rightGyroY.Visible = true;
+            rightGyroZ.Visible = true;
 
-            turnsInfo.Text = results.turnsLeft + " turns left and " + results.turnsRight + " turns right are classified";
+            turnsInfo.Text = results.turnsLeft + " left turns and " + results.turnsRight + " right turns are classified";
             turnsInfo.Visible = true;
-            label1.Visible = true;
+            turnsLegend.Visible = true;
 
             plotExists = true;
             selectData_button.Enabled = true;
         }
 
-        private void SelectData_button(object sender, EventArgs e)
+        private void SelectDataButton(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -188,7 +187,7 @@ namespace WindowsFormsApp
             }
         }
 
-        private void DetectTurns_button(object sender, EventArgs e)
+        private void DetectTurnsButton(object sender, EventArgs e)
         {            
             if (plotExists == true)
             {
@@ -208,19 +207,19 @@ namespace WindowsFormsApp
                 plotExists = false;
 
                 // hide legend
-                checkBox3.Visible = false;
-                checkBox1.Visible = false;
-                checkBox2.Visible = false;
-                checkBox4.Visible = false;
-                checkBox5.Visible = false;
-                checkBox6.Visible = false;
-                checkBox3.Checked = true;
-                checkBox1.Checked = true;
-                checkBox2.Checked = true;
-                checkBox4.Checked = true;
-                checkBox5.Checked = true;
-                checkBox6.Checked = true;
-                label1.Visible = false;
+                leftGyroX.Visible = false;
+                leftGyroY.Visible = false;
+                leftGyroZ.Visible = false;
+                rightGyroX.Visible = false;
+                rightGyroY.Visible = false;
+                rightGyroZ.Visible = false;
+                leftGyroX.Checked = true;
+                leftGyroY.Checked = true;
+                leftGyroZ.Checked = true;
+                rightGyroX.Checked = true;
+                rightGyroY.Checked = true;
+                rightGyroZ.Checked = true;
+                turnsLegend.Visible = false;
             }
 
             selectData_button.Enabled = false;
@@ -228,7 +227,7 @@ namespace WindowsFormsApp
             
             // run progressbar
             circularProgressBar.Visible = true;
-            timer1.Start();
+            timer.Start();
 
             Thread thr = new Thread(() =>
             {
@@ -239,18 +238,11 @@ namespace WindowsFormsApp
             thr.Start();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             circularProgressBar.StartAngle += 5;
         }
 
-        private void CheckBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox3.Checked == true)
-                chartGyroscope.Series[0].Enabled = true;
-            else
-                chartGyroscope.Series[0].Enabled = false;
-        }
 
         private void Form_Resize(object sender, EventArgs e)
         {
@@ -258,33 +250,73 @@ namespace WindowsFormsApp
             int X = chartGyroscope.Location.X + chartGyroscope.Size.Width;
 
             int Y0 = chartGyroscope.Location.Y + 3 * chartGyroscope.Size.Height / 35;
-            checkBox3.Location = new System.Drawing.Point(X, Y0);
+            leftGyroX.Location = new System.Drawing.Point(X, Y0);
 
             int Y1 = chartGyroscope.Location.Y + 5 * chartGyroscope.Size.Height / 35;
-            checkBox1.Location = new System.Drawing.Point(X, Y1);
+            leftGyroY.Location = new System.Drawing.Point(X, Y1);
 
             int Y2 = chartGyroscope.Location.Y + 7 * chartGyroscope.Size.Height / 35;
-            checkBox2.Location = new System.Drawing.Point(X, Y2);
+            leftGyroZ.Location = new System.Drawing.Point(X, Y2);
 
             int Y3 = chartGyroscope.Location.Y + 14 * chartGyroscope.Size.Height / 35 + 5;
-            checkBox4.Location = new System.Drawing.Point(X, Y3);
+            rightGyroX.Location = new System.Drawing.Point(X, Y3);
 
             int Y4 = chartGyroscope.Location.Y + 16 * chartGyroscope.Size.Height / 35 + 5;
-            checkBox5.Location = new System.Drawing.Point(X, Y4);
+            rightGyroY.Location = new System.Drawing.Point(X, Y4);
 
             int Y5 = chartGyroscope.Location.Y + 18 * chartGyroscope.Size.Height / 35 + 5;
-            checkBox6.Location = new System.Drawing.Point(X, Y5);
+            rightGyroZ.Location = new System.Drawing.Point(X, Y5);
 
             int Y6 = chartGyroscope.Location.Y + 25 * chartGyroscope.Size.Height / 35 + 5;
-            label1.Location = new System.Drawing.Point(X, Y6);
+            turnsLegend.Location = new System.Drawing.Point(X, Y6);
         }
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void leftGyroX_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
+            if (leftGyroX.Checked == true)
+                chartGyroscope.Series[0].Enabled = true;
+            else
+                chartGyroscope.Series[0].Enabled = false;
+        }
+
+        private void leftGyroY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (leftGyroY.Checked == true)
                 chartGyroscope.Series[1].Enabled = true;
             else
                 chartGyroscope.Series[1].Enabled = false;
+        }
+
+        private void leftGyroZ_CheckedChanged(object sender, EventArgs e)
+        {
+            if (leftGyroZ.Checked == true)
+                chartGyroscope.Series[2].Enabled = true;
+            else
+                chartGyroscope.Series[2].Enabled = false;
+        }
+
+        private void rightGyroX_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rightGyroX.Checked == true)
+                chartGyroscope.Series[4].Enabled = true;
+            else
+                chartGyroscope.Series[4].Enabled = false;
+        }
+
+        private void rightGyroY_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rightGyroY.Checked == true)
+                chartGyroscope.Series[5].Enabled = true;
+            else
+                chartGyroscope.Series[5].Enabled = false;
+        }
+
+        private void rightGyroZ_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rightGyroZ.Checked == true)
+                chartGyroscope.Series[6].Enabled = true;
+            else
+                chartGyroscope.Series[6].Enabled = false;
         }
     }
 }

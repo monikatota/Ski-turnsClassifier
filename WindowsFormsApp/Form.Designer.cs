@@ -51,15 +51,15 @@
             this.chartGyroscope = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.turnsInfo = new System.Windows.Forms.Label();
             this.circularProgressBar = new CircularProgressBar.CircularProgressBar();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.selectedFile = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.leftGyroX = new System.Windows.Forms.CheckBox();
+            this.leftGyroY = new System.Windows.Forms.CheckBox();
+            this.leftGyroZ = new System.Windows.Forms.CheckBox();
+            this.rightGyroX = new System.Windows.Forms.CheckBox();
+            this.rightGyroY = new System.Windows.Forms.CheckBox();
+            this.rightGyroZ = new System.Windows.Forms.CheckBox();
+            this.turnsLegend = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartGyroscope)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +71,7 @@
             this.selectData_button.TabIndex = 4;
             this.selectData_button.Text = "Select sensors data";
             this.selectData_button.UseVisualStyleBackColor = true;
-            this.selectData_button.Click += new System.EventHandler(this.SelectData_button);
+            this.selectData_button.Click += new System.EventHandler(this.SelectDataButton);
             // 
             // loadData_button
             // 
@@ -81,7 +81,7 @@
             this.loadData_button.TabIndex = 5;
             this.loadData_button.Text = "Detect ski-turns";
             this.loadData_button.UseVisualStyleBackColor = true;
-            this.loadData_button.Click += new System.EventHandler(this.DetectTurns_button);
+            this.loadData_button.Click += new System.EventHandler(this.DetectTurnsButton);
             // 
             // chartGyroscope
             // 
@@ -157,7 +157,7 @@
             this.chartGyroscope.Series.Add(series5);
             this.chartGyroscope.Series.Add(series6);
             this.chartGyroscope.Series.Add(series7);
-            this.chartGyroscope.Size = new System.Drawing.Size(1156, 481);
+            this.chartGyroscope.Size = new System.Drawing.Size(906, 481);
             this.chartGyroscope.TabIndex = 6;
             this.chartGyroscope.Text = "chart1";
             title1.Alignment = System.Drawing.ContentAlignment.TopCenter;
@@ -188,9 +188,9 @@
             this.turnsInfo.ForeColor = System.Drawing.Color.Red;
             this.turnsInfo.Location = new System.Drawing.Point(27, 610);
             this.turnsInfo.Name = "turnsInfo";
-            this.turnsInfo.Size = new System.Drawing.Size(1322, 38);
+            this.turnsInfo.Size = new System.Drawing.Size(1072, 38);
             this.turnsInfo.TabIndex = 7;
-            this.turnsInfo.Text = "label1";
+            this.turnsInfo.Text = "turnsInfo";
             this.turnsInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // circularProgressBar
@@ -204,7 +204,7 @@
             this.circularProgressBar.InnerColor = System.Drawing.SystemColors.Control;
             this.circularProgressBar.InnerMargin = 0;
             this.circularProgressBar.InnerWidth = -2;
-            this.circularProgressBar.Location = new System.Drawing.Point(619, 289);
+            this.circularProgressBar.Location = new System.Drawing.Point(494, 289);
             this.circularProgressBar.MarqueeAnimationSpeed = 2000;
             this.circularProgressBar.Name = "circularProgressBar";
             this.circularProgressBar.OuterColor = System.Drawing.SystemColors.ButtonShadow;
@@ -225,15 +225,16 @@
             this.circularProgressBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.circularProgressBar.Value = 60;
             // 
-            // timer1
+            // timer
             // 
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.timer.Interval = 10;
+            this.timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // selectedFile
             // 
             this.selectedFile.Enabled = false;
             this.selectedFile.Location = new System.Drawing.Point(31, 99);
+            this.selectedFile.MinimumSize = new System.Drawing.Size(333, 22);
             this.selectedFile.Multiline = true;
             this.selectedFile.Name = "selectedFile";
             this.selectedFile.ReadOnly = true;
@@ -241,103 +242,107 @@
             this.selectedFile.Size = new System.Drawing.Size(333, 22);
             this.selectedFile.TabIndex = 14;
             // 
-            // checkBox3
+            // leftGyroX
             // 
-            this.checkBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBox3.Location = new System.Drawing.Point(1193, 167);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(98, 21);
-            this.checkBox3.TabIndex = 18;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
+            this.leftGyroX.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.leftGyroX.AutoSize = true;
+            this.leftGyroX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.leftGyroX.Location = new System.Drawing.Point(1023, 167);
+            this.leftGyroX.Name = "leftGyroX";
+            this.leftGyroX.Size = new System.Drawing.Size(89, 21);
+            this.leftGyroX.TabIndex = 18;
+            this.leftGyroX.Text = "leftGyroX";
+            this.leftGyroX.UseVisualStyleBackColor = true;
+            this.leftGyroX.CheckedChanged += new System.EventHandler(this.leftGyroX_CheckedChanged);
             // 
-            // checkBox1
+            // leftGyroY
             // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.DarkOrange;
-            this.checkBox1.Location = new System.Drawing.Point(1193, 194);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 21);
-            this.checkBox1.TabIndex = 19;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            this.leftGyroY.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.leftGyroY.AutoSize = true;
+            this.leftGyroY.ForeColor = System.Drawing.Color.DarkOrange;
+            this.leftGyroY.Location = new System.Drawing.Point(1023, 194);
+            this.leftGyroY.Name = "leftGyroY";
+            this.leftGyroY.Size = new System.Drawing.Size(89, 21);
+            this.leftGyroY.TabIndex = 19;
+            this.leftGyroY.Text = "leftGyroY";
+            this.leftGyroY.UseVisualStyleBackColor = true;
+            this.leftGyroY.CheckedChanged += new System.EventHandler(this.leftGyroY_CheckedChanged);
             // 
-            // checkBox2
+            // leftGyroZ
             // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.ForeColor = System.Drawing.Color.Blue;
-            this.checkBox2.Location = new System.Drawing.Point(1193, 221);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(98, 21);
-            this.checkBox2.TabIndex = 20;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.leftGyroZ.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.leftGyroZ.AutoSize = true;
+            this.leftGyroZ.ForeColor = System.Drawing.Color.Blue;
+            this.leftGyroZ.Location = new System.Drawing.Point(1023, 221);
+            this.leftGyroZ.Name = "leftGyroZ";
+            this.leftGyroZ.Size = new System.Drawing.Size(89, 21);
+            this.leftGyroZ.TabIndex = 20;
+            this.leftGyroZ.Text = "leftGyroZ";
+            this.leftGyroZ.UseVisualStyleBackColor = true;
+            this.leftGyroZ.CheckedChanged += new System.EventHandler(this.leftGyroZ_CheckedChanged);
             // 
-            // checkBox4
+            // rightGyroX
             // 
-            this.checkBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBox4.Location = new System.Drawing.Point(1193, 318);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(98, 21);
-            this.checkBox4.TabIndex = 21;
-            this.checkBox4.Text = "checkBox4";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.rightGyroX.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rightGyroX.AutoSize = true;
+            this.rightGyroX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.rightGyroX.Location = new System.Drawing.Point(1023, 341);
+            this.rightGyroX.Name = "rightGyroX";
+            this.rightGyroX.Size = new System.Drawing.Size(98, 21);
+            this.rightGyroX.TabIndex = 21;
+            this.rightGyroX.Text = "rightGyroX";
+            this.rightGyroX.UseVisualStyleBackColor = true;
+            this.rightGyroX.CheckedChanged += new System.EventHandler(this.rightGyroX_CheckedChanged);
             // 
-            // checkBox5
+            // rightGyroY
             // 
-            this.checkBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.ForeColor = System.Drawing.Color.DarkOrange;
-            this.checkBox5.Location = new System.Drawing.Point(1193, 358);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(98, 21);
-            this.checkBox5.TabIndex = 22;
-            this.checkBox5.Text = "checkBox5";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.rightGyroY.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rightGyroY.AutoSize = true;
+            this.rightGyroY.ForeColor = System.Drawing.Color.DarkOrange;
+            this.rightGyroY.Location = new System.Drawing.Point(1023, 368);
+            this.rightGyroY.Name = "rightGyroY";
+            this.rightGyroY.Size = new System.Drawing.Size(98, 21);
+            this.rightGyroY.TabIndex = 22;
+            this.rightGyroY.Text = "rightGyroY";
+            this.rightGyroY.UseVisualStyleBackColor = true;
+            this.rightGyroY.CheckedChanged += new System.EventHandler(this.rightGyroY_CheckedChanged);
             // 
-            // checkBox6
+            // rightGyroZ
             // 
-            this.checkBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.ForeColor = System.Drawing.Color.Blue;
-            this.checkBox6.Location = new System.Drawing.Point(1193, 398);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(98, 21);
-            this.checkBox6.TabIndex = 23;
-            this.checkBox6.Text = "checkBox6";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.rightGyroZ.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rightGyroZ.AutoSize = true;
+            this.rightGyroZ.ForeColor = System.Drawing.Color.Blue;
+            this.rightGyroZ.Location = new System.Drawing.Point(1023, 395);
+            this.rightGyroZ.Name = "rightGyroZ";
+            this.rightGyroZ.Size = new System.Drawing.Size(98, 21);
+            this.rightGyroZ.TabIndex = 23;
+            this.rightGyroZ.Text = "rightGyroZ";
+            this.rightGyroZ.UseVisualStyleBackColor = true;
+            this.rightGyroZ.CheckedChanged += new System.EventHandler(this.rightGyroZ_CheckedChanged);
             // 
-            // label1
+            // turnsLegend
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(1193, 508);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "label1";
+            this.turnsLegend.AutoSize = true;
+            this.turnsLegend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.turnsLegend.ForeColor = System.Drawing.Color.Red;
+            this.turnsLegend.Location = new System.Drawing.Point(1040, 500);
+            this.turnsLegend.Name = "turnsLegend";
+            this.turnsLegend.Size = new System.Drawing.Size(99, 20);
+            this.turnsLegend.TabIndex = 24;
+            this.turnsLegend.Text = "turnsLegend";
             // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 679);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox6);
-            this.Controls.Add(this.checkBox5);
-            this.Controls.Add(this.checkBox4);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.checkBox3);
+            this.ClientSize = new System.Drawing.Size(1136, 679);
+            this.Controls.Add(this.turnsLegend);
+            this.Controls.Add(this.rightGyroZ);
+            this.Controls.Add(this.rightGyroY);
+            this.Controls.Add(this.rightGyroX);
+            this.Controls.Add(this.leftGyroZ);
+            this.Controls.Add(this.leftGyroY);
+            this.Controls.Add(this.leftGyroX);
             this.Controls.Add(this.selectedFile);
             this.Controls.Add(this.circularProgressBar);
             this.Controls.Add(this.turnsInfo);
@@ -359,16 +364,16 @@
         private System.Windows.Forms.Button loadData_button;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartGyroscope;
         private System.Windows.Forms.Label turnsInfo;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
         private CircularProgressBar.CircularProgressBar circularProgressBar;
         private System.Windows.Forms.TextBox selectedFile;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox leftGyroX;
+        private System.Windows.Forms.CheckBox leftGyroY;
+        private System.Windows.Forms.CheckBox leftGyroZ;
+        private System.Windows.Forms.CheckBox rightGyroX;
+        private System.Windows.Forms.CheckBox rightGyroY;
+        private System.Windows.Forms.CheckBox rightGyroZ;
+        private System.Windows.Forms.Label turnsLegend;
     }
 }
 
