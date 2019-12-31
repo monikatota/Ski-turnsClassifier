@@ -7,11 +7,11 @@ C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\bin\WcfService3ap
 C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\bin\WcfService3appTEST.exe
 C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\bin\WcfService3appTEST.pdb
 C:\Users\Ja\source\repos\WcfService3appTEST\WcfService3appTEST\obj\Debug\WcfService.csprojAssemblyReference.cache
-C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService3appTEST.exe.config
-C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService3appTEST.exe
-C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService3appTEST.pdb
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\Interop.MLApp.dll
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.csproj.ResolveComReference.cache
-C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService3appTEST.exe
-C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService3appTEST.pdb
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.csprojAssemblyReference.cache
+C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService.exe.config
+C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService.exe
+C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService.pdb
+C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.exe
+C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.pdb
