@@ -12,6 +12,6 @@ C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService3appTEST.e
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\bin\WcfService3appTEST.pdb
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\Interop.MLApp.dll
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.csproj.ResolveComReference.cache
-C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.csproj.CoreCompileInputs.cache
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService3appTEST.exe
 C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService3appTEST.pdb
+C:\Users\Ja\source\repos\Ski-turnsClassifier\WcfService\obj\Debug\WcfService.csprojAssemblyReference.cache

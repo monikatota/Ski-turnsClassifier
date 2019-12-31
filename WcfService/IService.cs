@@ -30,13 +30,13 @@ namespace WcfService
         public double[] rightGyroY;
         [DataMember]
         public double[] rightGyroZ;
-        // classified either turns right or left
+        // classified either right or left turns
         [DataMember]
         public double[] responses;
         // total number of turns
         [DataMember]
-        public double turnsRight;
+        public double rightTurns;
         [DataMember]
-        public double turnsLeft;
+        public double leftTurns;
     }
 }

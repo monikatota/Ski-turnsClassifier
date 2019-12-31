@@ -27,10 +27,6 @@ namespace WindowsFormsApp
 
             // chart settings
             chartGyroscope.Visible = false;
-            //chartGyroscope.Series[0].Enabled = false;
-            //chartGyroscope.Series[1].Enabled = false;
-            //chartGyroscope.Series[2].Enabled = false;
-            //chartGyroscope.Series[3].Enabled = false;
             chartGyroscope.Series[0].Name = "gyroscope X axis";
             chartGyroscope.Series[1].Name = "gyroscope Y axis";
             chartGyroscope.Series[2].Name = "gyroscope Z axis";
@@ -142,7 +138,7 @@ namespace WindowsFormsApp
             rightGyroY.Visible = true;
             rightGyroZ.Visible = true;
 
-            turnsInfo.Text = results.turnsLeft + " left turns and " + results.turnsRight + " right turns are classified";
+            turnsInfo.Text = results.leftTurns + " left turns and " + results.rightTurns + " right turns are classified";
             turnsInfo.Visible = true;
             turnsLegend.Visible = true;
 
@@ -242,7 +238,6 @@ namespace WindowsFormsApp
         {
             circularProgressBar.StartAngle += 5;
         }
-
 
         private void Form_Resize(object sender, EventArgs e)
         {

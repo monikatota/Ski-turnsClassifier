@@ -5,7 +5,7 @@ function [Left_Ski_Gyroscope_X_axis,...
 		  Right_Ski_Gyroscope_X_axis,...
           Right_Ski_Gyroscope_Y_axis,...
           Right_Ski_Gyroscope_Z_axis,...
-          classified_labels, COUNT_TURN_LEFT, COUNT_TURN_RIGHT] = classify_turns( file )
+          classified_labels, COUNT_LEFT_TURN, COUNT_RIGHT_TURN] = classify_turns( file )
 
 %LOAD TRAINED MODEL
 load('SVM_model');
@@ -35,9 +35,9 @@ predictions = SVM_model.predictFcn(SkiTurns_dataset_to_classify);
 %write labels in numerical form to display results on the plot
 classified_labels=zeros(size(predictions,1),1);
 for i=1:size(predictions,1)
-    if strcmp(predictions(i),'Turn right')
+    if strcmp(predictions(i),'Right turn')
         classified_labels(i,1)=-1;
-    elseif strcmp(predictions(i),'Turn left')
+    elseif strcmp(predictions(i),'Left turn')
         classified_labels(i,1)=1;
     elseif strcmp(predictions(i),'No turn')
         classified_labels(i,1)=0;
@@ -46,8 +46,8 @@ end
 
 % filtration of predictions and calculating number of detected ski-turns
 
-COUNT_TURN_LEFT = 0;
-COUNT_TURN_RIGHT = 0;
+COUNT_LEFT_TURN = 0;
+COUNT_RIGHT_TURN = 0;
 
 for i=2:size(classified_labels,1)
     % turn left
@@ -67,7 +67,7 @@ for i=2:size(classified_labels,1)
                classified_labels(1)=0;
             end
         else
-            COUNT_TURN_LEFT = COUNT_TURN_LEFT + 1;
+            COUNT_LEFT_TURN = COUNT_LEFT_TURN + 1;
         end
     % turn right  
     elseif(classified_labels(i)==-1 && classified_labels(i-1)~=-1 || classified_labels(i)==-1 && i==2 )
@@ -87,10 +87,9 @@ for i=2:size(classified_labels,1)
                classified_labels(1)=0;
             end
         else
-            COUNT_TURN_RIGHT = COUNT_TURN_RIGHT + 1;
+            COUNT_RIGHT_TURN = COUNT_RIGHT_TURN + 1;
         end
     end
 end
 
 end
-

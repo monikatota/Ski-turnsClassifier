@@ -95,23 +95,21 @@ namespace WcfService
             classifiedTurns.rightGyroZ = rightGyroZ;
             classifiedTurns.responses = response;
 
-            double turnsLeft = (double)result[7];
-            classifiedTurns.turnsLeft = turnsLeft;
-            double turnsRight = (double)result[8];
-            classifiedTurns.turnsRight = turnsRight;
+            double leftTurns = (double)result[7];
+            classifiedTurns.leftTurns = leftTurns;
+            double rightTurns = (double)result[8];
+            classifiedTurns.rightTurns = rightTurns;
 
             return classifiedTurns;
         }
 
         public static void Main()
         {
+            // Project url: http://localhost:52050/Service.svc
             // Create a ServiceHost for the Service type.  
             using (ServiceHost serviceHost =
                    new ServiceHost(typeof(Service)))
             {
-                // cmd ?
-                // http://localhost:52050/Service.svc
-
                 // Create the MATLAB instance
                 _matlab = new MLApp.MLApp();
 

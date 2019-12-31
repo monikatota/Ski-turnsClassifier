@@ -32,6 +32,9 @@ namespace WindowsFormsApp.ServiceReference {
         private double[] leftGyroZField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double leftTurnsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double[] responsesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -44,10 +47,7 @@ namespace WindowsFormsApp.ServiceReference {
         private double[] rightGyroZField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double turnsLeftField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double turnsRightField;
+        private double rightTurnsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -94,6 +94,19 @@ namespace WindowsFormsApp.ServiceReference {
                 if ((object.ReferenceEquals(this.leftGyroZField, value) != true)) {
                     this.leftGyroZField = value;
                     this.RaisePropertyChanged("leftGyroZ");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double leftTurns {
+            get {
+                return this.leftTurnsField;
+            }
+            set {
+                if ((this.leftTurnsField.Equals(value) != true)) {
+                    this.leftTurnsField = value;
+                    this.RaisePropertyChanged("leftTurns");
                 }
             }
         }
@@ -151,27 +164,14 @@ namespace WindowsFormsApp.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double turnsLeft {
+        public double rightTurns {
             get {
-                return this.turnsLeftField;
+                return this.rightTurnsField;
             }
             set {
-                if ((this.turnsLeftField.Equals(value) != true)) {
-                    this.turnsLeftField = value;
-                    this.RaisePropertyChanged("turnsLeft");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double turnsRight {
-            get {
-                return this.turnsRightField;
-            }
-            set {
-                if ((this.turnsRightField.Equals(value) != true)) {
-                    this.turnsRightField = value;
-                    this.RaisePropertyChanged("turnsRight");
+                if ((this.rightTurnsField.Equals(value) != true)) {
+                    this.rightTurnsField = value;
+                    this.RaisePropertyChanged("rightTurns");
                 }
             }
         }
